@@ -11,7 +11,7 @@ const routes = require('./routes/index');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { DATABASE } = require('./utils/utils');
 
-const { PORT = 3005, MONGO_URL = DATABASE } = process.env;
+const { PORT = 3000, MONGO_URL = DATABASE } = process.env;
 const app = express();
 app.use(cors());
 
