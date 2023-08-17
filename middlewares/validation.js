@@ -1,8 +1,8 @@
 const { celebrate, Joi } = require('celebrate');
-const { regexLink } = require('../utils/utils');
+const { regexUrl } = require('../utils/utils');
 
 const urlValidation = (value, helpers) => {
-  if (regexLink(value)) {
+  if (regexUrl(value)) {
     return value;
   }
   return helpers.message('Некорректная ссылка');
