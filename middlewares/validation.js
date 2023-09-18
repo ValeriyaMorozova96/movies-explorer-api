@@ -1,12 +1,5 @@
 const { celebrate, Joi } = require('celebrate');
-const { regexLink } = require('../utils/utils');
-
-const urlValidation = (value, helpers) => {
-  if (regexLink(value)) {
-    return value;
-  }
-  return helpers.message('Некорректная ссылка');
-};
+const { regexUrl } = require('../utils/utils');
 
 const signinValidation = celebrate({
   body: Joi.object().keys({
@@ -37,9 +30,9 @@ const createMovieValidation = celebrate({
     duration: Joi.number().required(),
     year: Joi.string().required(),
     description: Joi.string().required(),
-    image: Joi.string().custom(urlValidation).required(),
-    trailerLink: Joi.string().custom(urlValidation).required(),
-    thumbnail: Joi.string().custom(urlValidation).required(),
+    image: Joi.string().pattern(regexUrl).uri({ scheme: ['http', 'https'] }).required(),
+    trailerLink: Joi.string().pattern(regexUrl).uri({ scheme: ['http', 'https'] }).required(),
+    thumbnail: Joi.string().pattern(regexUrl).uri({ scheme: ['http', 'https'] }).required(),
     movieId: Joi.number().required(),
     nameRU: Joi.string().required(),
     nameEN: Joi.string().required(),
@@ -48,7 +41,7 @@ const createMovieValidation = celebrate({
 
 const deleteMovieValidation = celebrate({
   params: Joi.object().keys({
-    movieId: Joi.string().length(24).hex().required(),
+    _id: Joi.string().length(24).hex().required(),
   }),
 });
 
