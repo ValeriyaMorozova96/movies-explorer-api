@@ -6,7 +6,7 @@ __Ссылка на репозиторий__: https://github.com/ValeriyaMorozov
 __Ссылка на проект:__
 
 * IP 51.250.109.108
-* Backend https://api.morozovavs.movies.nomoreparties.sbs
+* Backend https://api.morozovavs.movies.nomoreparties.sbs (виртуальная машина остановлена)
 
 __В бэкэнд части проекта предусмотрено:__
 
